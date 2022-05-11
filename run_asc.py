@@ -31,7 +31,7 @@ from transformers import BertModel, BertTokenizer, AdamW, get_linear_schedule_wi
 from transformers import BertForSequenceClassification
 import absa_data_utils as data_utils
 from absa_data_utils import ABSATokenizer
-import modelconfig
+#import modelconfig
 
 logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt = '%m/%d/%Y %H:%M:%S',

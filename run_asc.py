@@ -91,8 +91,7 @@ def train(args):
         {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
         ]
-    t_total = 4300
-     # 4300 for HAAD
+   
     #optimizer = BertAdam(optimizer_grouped_parameters,lr=args.learning_rate,warmup=args.warmup_proportion,t_total=t_total)
     optimizer = AdamW(model.parameters(), lr=2e-5, correct_bias=False)
 
@@ -109,7 +108,7 @@ def train(args):
             loss = outputs[0]
             loss.backward()
 
-            lr_this_step = args.learning_rate * warmup_linear(global_step/t_total, args.warmup_proportion)
+            lr_this_step = args.learning_rate * warmup_linear(global_step/4300, args.warmup_proportion)
             for param_group in optimizer.param_groups:
                 param_group['lr'] = lr_this_step
             optimizer.step()
